@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blue Haven</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(135deg, #0A4D8A, #1C6FBD);
+            color: #F7FAFC;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            text-align: center;
+            position: relative;
+        }
+
+        /* Create a subtle animated background pattern */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(255,255,255,0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255,255,255,0.05) 0%, transparent 50%);
+            animation: backgroundShift 15s ease-in-out infinite alternate;
+            z-index: 0;
+        }
+
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
+        }
+
+        .company-name {
+            font-family: 'Varela Round', sans-serif;
+            font-size: 4.8rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(120deg, #4A90E2 0%, #67B8F7 30%, #89F7FE 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            opacity: 0;
+            transform: translateY(-20px);
+            position: relative;
+            animation: fadeInFromTop 3.5s ease-in-out forwards;
+        }
+
+        .company-name::after {
+            content: 'Blue Haven';
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: linear-gradient(120deg, #4A90E2 0%, #67B8F7 30%, #89F7FE 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            filter: blur(20px);
+            opacity: 0.5;
+            animation: glowPulse 3s ease-in-out infinite;
+        }
+
+        .header-text {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            background: linear-gradient(120deg, #FFE344 20%, #FFD000 80%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInFromBottom 1s ease-out forwards 1s;
+        }
+
+        .header-text::after {
+            content: attr(data-text);
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: -1;
+            background: linear-gradient(120deg, #FFE344 20%, #FFD000 80%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            filter: blur(8px);
+            opacity: 0.3;
+        }
+
+        @keyframes fadeInFromTop {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInFromBottom {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }        
+
+        @keyframes glowPulse {
+            0%, 100% {
+                filter: blur(20px);
+                opacity: 0.5;
+            }
+            50% {
+                filter: blur(25px);
+                opacity: 0.7;
+            }
+        }
+
+        .logo-container {
+            margin-bottom: 50px;
+            animation: fadeIn 1.5s ease-in-out;
+            position: relative;
+        }
+
+        .logo-container img {
+            max-width: 250px;
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Enhanced spotlight effect */
+        .spotlight {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background: radial-gradient(
+                circle at var(--x, 50%) var(--y, 50%),
+                rgba(255, 255, 255, 0.15) 0%,
+                transparent 50%
+            );
+            z-index: 2;
+        }
+
+        .invest-button-container {
+            position: relative;
+        }
+
+        .invest-button-container::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(
+                circle,
+                rgba(255, 209, 64, 0.2),
+                transparent 70%
+            );
+            filter: blur(20px);
+            animation: pulsingSpotlight 4s infinite;
+        }
+
+        .pp-MZDLTRKFYXTYN {
+            text-align: center;
+            border: none;
+            border-radius: 0.25rem;
+            min-width: 11.625rem;
+            padding: 0.5rem 2.5rem;
+            height: 3rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #FFD140, #FFA500);
+            color: #000000;
+            font-family: "Nunito", sans-serif;
+            font-size: 1.3rem;
+            line-height: 1.5rem;
+            cursor: pointer;
+            z-index: 1;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 209, 64, 0.3);
+        }
+
+        .pp-MZDLTRKFYXTYN:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 209, 64, 0.4);
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulsingSpotlight {
+            0%, 100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.8;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.2);
+                opacity: 1;
+            }
+        }
+
+        @keyframes backgroundShift {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="spotlight"></div>
+    <div class="content-wrapper">
+        <!-- Company Name -->
+        <div class="company-name">Blue Haven</div>
+        <!-- Header Text -->
+        <div class="header-text" data-text="Building the Future of AI-Driven E-Commerce">Building the Future of AI-Driven E-Commerce</div>
+        <!-- Logo Section -->
+        <div class="logo-container">
+            <div class="spotlight"></div>
+            <img src="https://i.imgur.com/qOilQyo.png" alt="Blue Haven Logo">
+        </div>
+        <!-- Invest Button Section -->
+        <div class="invest-button-container">
+            <form action="https://www.paypal.com/ncp/payment/MZDLTRKFYXTYN" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;">
+                <input class="pp-MZDLTRKFYXTYN" type="submit" value="Invest" />
+                <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" />
+                <section> Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;"/></section>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Interactive spotlight effect
+        document.addEventListener('mousemove', (e) => {
+            const spotlight = document.querySelector('.spotlight');
+            const x = (e.clientX / window.innerWidth) * 100;
+            const y = (e.clientY / window.innerHeight) * 100;
+            spotlight.style.setProperty('--x', `${x}%`);
+            spotlight.style.setProperty('--y', `${y}%`);
+        });
+    </script>
+</body>
+</html>
